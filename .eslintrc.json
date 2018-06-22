@@ -23,6 +23,7 @@
         ]
       }
     ],
+    "no-return-assign": "off",
     "no-underscore-dangle": "off",
     "no-shadow": "off",
     "comma-dangle": ["error", {

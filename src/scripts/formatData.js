@@ -11,7 +11,12 @@ const PATHS = require('../constants/paths');
 const SHORTHAND_FORMATTED_DATA_FILE_NAME = 'shorthand-properties.json';
 const formattedData = Object.entries(properties)
 // properties that have an array as their computed value, are shorthand properties
-  .filter(([, data]) => Array.isArray(data.computed))
+  .filter(([, data]) => {
+    console.log('computed3a');
+    const a = Array.isArray(data.computed);
+    console.log('computed3b');
+    return a;
+  })
   // add the shorthandType property to the data
   .map(([prop, data]) => [
     prop,

@@ -56,12 +56,16 @@ const properties = require('./formatted-data/properties.json');
  */
 module.exports = function getShorthandComputedProperties(shorthandProperty, recursivelyResolve = false) {
   if (properties[shorthandProperty]) {
-    if (Array.isArray(properties[shorthandProperty].computed)) {
+    const a = Array.isArray(properties[shorthandProperty].computed);
+    if (a) {
       const computedProperties = properties[shorthandProperty].computed;
 
       return recursivelyResolve
         ? computedProperties.concat(...computedProperties
-          .filter(property => Array.isArray(properties[property].computed))
+          .filter((property) => {
+            const c = Array.isArray(properties[property].computed);
+            return c;
+          })
           .map(property => getShorthandComputedProperties(property, true))
         )
         : computedProperties;
